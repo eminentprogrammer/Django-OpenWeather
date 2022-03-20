@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+{% block title %} {{site}} {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row hero">
+        <div class="col-md-8 mx-auto">
+            <div class="container search-container">
+                <div class="row mx-auto">
+                    <div class="card shadow">
+                        <form method="get" class="form-inline p-md-3 m-3">
+                            <div class="form-group">
+                                <label for="city" class="h4">City:</label>
+                                <input class="form-control" type="text" name="city" id="search">
+                                <input class="m-2 btn btn-md btn-warning" type="submit" value="search">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            {% if city %}
+                <div class="row mt-5">
+                    <div class="col-md-8 card mx-auto">
+                        <div class="alert text-light h5 rounded">
+                            {{response.city}}
+                            <img src="http://openweathermap.org/img/w/{{response.icon}}.png" alt="#" class="">
+                            {{response.temperature}}°C
+
+                            <div class="col-md h6">
+                                It feels like {{response.description}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
